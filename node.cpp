@@ -55,8 +55,8 @@ void FifteenDigital::NodeInit()
     //close表
     CloseTable.CloseNext = NULL;
 
-    FifteenDigital::ShowNode(&RootNode);
-    FifteenDigital::UiInit();
+    //FifteenDigital::ShowNode(&RootNode);
+    //FifteenDigital::UiInit();
 }
 
 //计算一个结点空位的位数
@@ -355,7 +355,7 @@ TreeNode* FifteenDigital::SearchOpenTable()
         MinNode = OpenTable.OpenNext;
         for(p = OpenTable.OpenNext; p->OpenNext!=NULL; p=p->OpenNext)
         {
-            if(p->fn < MinNode->fn)                                   // || (p->fn == MinNode->fn && p->deepth > MinNode->deepth))
+            if(p->fn < MinNode->fn)     // || (p->fn == MinNode->fn && p->deepth > MinNode->deepth))
             {
                 MinNode = p;
             }

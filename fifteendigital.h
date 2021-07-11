@@ -1,23 +1,20 @@
 #ifndef FIFTEENDIGITAL_H
 #define FIFTEENDIGITAL_H
 
-#include <QMainWindow>
 #include "node.h"
 #include "aisearch.h"
 
-namespace Ui {
-class FifteenDigital;
+//namespace Ui {
+//class FifteenDigital;
 //class TreeNode;
-}
+//}
 
-class FifteenDigital : public QMainWindow
+class FifteenDigital
 {
-    Q_OBJECT
-
 public:
-    explicit FifteenDigital(QWidget *parent = 0);
+    explicit FifteenDigital();
     //变量
-    int BarValue = 0;
+    int BarValue;
 
     //有关搜索树的函数
     void NodeInit();
@@ -31,18 +28,13 @@ public:
     void SortOpenTable();
     TreeNode* SearchOpenTable();
     bool MatchNumber(char a[4][4]);
-    void CountOpen();
-    void CountClose();
-    void GetNodeSonNum(TreeNode* p);
-
-    //有关图形界面的函数
-    void ShowNode(TreeNode* p);
-    void UiInit();
+    int CountOpen();
+    int CountClose();
+    int GetNodeSonNum(TreeNode* p);
 
     ~FifteenDigital();
 
-private slots:
-    void on_pushButton_clicked();
+    void run();
 
     void on_pushButton2_clicked();
 
@@ -50,16 +42,7 @@ private slots:
 
     void on_pushButton3_clicked();
 
-    void on_pushButton5_clicked();
-
-    void on_pushButton6_clicked();
-
-    void on_pushButton7_clicked();
-
-    void on_pushButton_2_clicked();
-
-private:
-    Ui::FifteenDigital *ui;
+    void init();
 };
 
 #endif // FIFTEENDIGITAL_H

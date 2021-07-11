@@ -2,6 +2,7 @@
 #include "fifteendigital.h"
 #include "node.h"
 #include "aisearch.h"
+#include "math.h"
 
 //使用1倍曼哈顿距离，扩展结点19719个，41层
 //使用2倍曼哈顿距离，不满足A*算法，扩展结点3769个

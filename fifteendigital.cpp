@@ -1,7 +1,5 @@
 #include "fifteendigital.h"
-#include "ui_fifteendigital.h"
 #include "iostream"
-#include "windows.h"
 #include "ctime"
 #include <stdlib.h>
 
@@ -9,119 +7,18 @@ using namespace std;
 char Goal[4][4]={{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,0}};
 int NodeSate = 0;
 
-FifteenDigital::FifteenDigital(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::FifteenDigital)
-{
+//FifteenDigital::FifteenDigital():
+//{
     //QColor emptyclor = QColor::fromRgb(11,1,200,0);
-    ui->setupUi(this);
-}
+    //ui->setupUi(this);
+//}
 
-FifteenDigital::~FifteenDigital()
-{
-    delete ui;
+//FifteenDigital::~FifteenDigital()
+//{
+    //delete ui;
+//}
 
-}
-
-void FifteenDigital::ShowNode(TreeNode* p)
-{
-    if(p!=NULL)
-    {
-        if(p->Number[0][0] > 0)
-            ui->Box01->setTextColor(RGB(0,0,255));
-        else
-            ui->Box01->setTextColor(RGB(0,255,0));
-        ui->Box01->setText(QString::number(p->Number[0][0],10));
-        if(p->Number[0][1] > 0)
-            ui->Box02->setTextColor(RGB(0,0,255));
-        else
-            ui->Box02->setTextColor(RGB(0,255,0));
-        ui->Box02->setText(QString::number(p->Number[0][1],10));
-        if(p->Number[0][2] > 0)
-            ui->Box03->setTextColor(RGB(0,0,255));
-        else
-            ui->Box03->setTextColor(RGB(0,255,0));
-        ui->Box03->setText(QString::number(p->Number[0][2],10));
-        if(p->Number[0][3] > 0)
-            ui->Box04->setTextColor(RGB(0,0,255));
-        else
-            ui->Box04->setTextColor(RGB(0,255,0));
-        ui->Box04->setText(QString::number(p->Number[0][3],10));
-        if(p->Number[1][0] > 0)
-            ui->Box05->setTextColor(RGB(0,0,255));
-        else
-            ui->Box05->setTextColor(RGB(0,255,0));
-        ui->Box05->setText(QString::number(p->Number[1][0],10));
-        if(p->Number[1][1] > 0)
-            ui->Box06->setTextColor(RGB(0,0,255));
-        else
-            ui->Box06->setTextColor(RGB(0,255,0));
-        ui->Box06->setText(QString::number(p->Number[1][1],10));
-        if(p->Number[1][2] > 0)
-            ui->Box07->setTextColor(RGB(0,0,255));
-        else
-            ui->Box07->setTextColor(RGB(0,255,0));
-        ui->Box07->setText(QString::number(p->Number[1][2],10));
-        if(p->Number[1][3] > 0)
-            ui->Box08->setTextColor(RGB(0,0,255));
-        else
-            ui->Box08->setTextColor(RGB(0,255,0));
-        ui->Box08->setText(QString::number(p->Number[1][3],10));
-        if(p->Number[2][0] > 0)
-            ui->Box09->setTextColor(RGB(0,0,255));
-        else
-            ui->Box09->setTextColor(RGB(0,255,0));
-        ui->Box09->setText(QString::number(p->Number[2][0],10));
-        if(p->Number[2][1] > 0)
-            ui->Box10->setTextColor(RGB(0,0,255));
-        else
-            ui->Box10->setTextColor(RGB(0,255,0));
-        ui->Box10->setText(QString::number(p->Number[2][1],10));
-        if(p->Number[2][2] > 0)
-            ui->Box11->setTextColor(RGB(0,0,255));
-        else
-            ui->Box11->setTextColor(RGB(0,255,0));
-        ui->Box11->setText(QString::number(p->Number[2][2],10));
-        if(p->Number[2][3] > 0)
-            ui->Box12->setTextColor(RGB(0,0,255));
-        else
-            ui->Box12->setTextColor(RGB(0,255,0));
-        ui->Box12->setText(QString::number(p->Number[2][3],10));
-        if(p->Number[3][0] > 0)
-            ui->Box13->setTextColor(RGB(0,0,255));
-        else
-            ui->Box13->setTextColor(RGB(0,255,0));
-        ui->Box13->setText(QString::number(p->Number[3][0],10));
-        if(p->Number[3][1] > 0)
-            ui->Box14->setTextColor(RGB(0,0,255));
-        else
-            ui->Box14->setTextColor(RGB(0,255,0));
-        ui->Box14->setText(QString::number(p->Number[3][1],10));
-        if(p->Number[3][2] > 0)
-            ui->Box15->setTextColor(RGB(0,0,255));
-        else
-            ui->Box15->setTextColor(RGB(0,255,0));
-        ui->Box15->setText(QString::number(p->Number[3][2],10));
-        if(p->Number[3][3] > 0)
-            ui->Box16->setTextColor(RGB(0,0,255));
-        else
-            ui->Box16->setTextColor(RGB(0,255,0));
-        ui->Box16->setText(QString::number(p->Number[3][3],10));
-    }
-}
-
-void FifteenDigital::UiInit()
-{
-    ui->textBrowser1->setText(QString::number(0,10));
-    ui->textBrowser2->setText(QString::number(0,10));
-    ui->textBrowser3->setText(QString::number(0,10));
-    ui->textBrowser4->setText(QString::number(0,10));
-    ui->pushButton5->setStyleSheet("background:rgb(0,255,0)");
-    ui->pushButton6->setStyleSheet("background:rgb(255,255,255)");
-    ui->pushButton7->setStyleSheet("background:rgb(255,255,255)");
-}
-
-void FifteenDigital::CountOpen()
+int FifteenDigital::CountOpen()
 {
     int a =0;
     TreeNode *p;
@@ -129,10 +26,10 @@ void FifteenDigital::CountOpen()
     {
         a++;
     }
-    ui->textBrowser1->setText(QString::number(a,10));
+    return a;
 }
 
-void FifteenDigital::CountClose()
+int FifteenDigital::CountClose()
 {
     int a =0;
     TreeNode *p;
@@ -140,10 +37,10 @@ void FifteenDigital::CountClose()
     {
         a++;
     }
-    ui->textBrowser2->setText(QString::number(a,10));
+    return a;
 }
 
-void FifteenDigital::GetNodeSonNum(TreeNode *p)
+int FifteenDigital::GetNodeSonNum(TreeNode *p)
 {
     int a = 0;
     if(p->SonNode1 != NULL)
@@ -154,7 +51,7 @@ void FifteenDigital::GetNodeSonNum(TreeNode *p)
         a+=1;
     if(p->SonNode4 != NULL)
         a++;
-    ui->textBrowser3->setText(QString::number(a,10));
+    return a;
 }
 
 
@@ -175,7 +72,7 @@ bool FifteenDigital::MatchNumber(char a[4][4])
 }
 
 //按键按下，这时候可以开始更改内容
-void FifteenDigital::on_pushButton_clicked()
+void FifteenDigital::run()
 {
     TreeNode *p;
     clock_t start,finish;
@@ -192,21 +89,19 @@ void FifteenDigital::on_pushButton_clicked()
             if(FifteenDigital::MatchNumber(p->Number) == true || time >100000)
             {    //当搜索到目标结点或者扩展次数超过10万次
                 FinalNode = p;
-                FifteenDigital::ShowNode(p);   //显示该结点的状态
-                FifteenDigital::CountOpen();   //显示open表的结点数量
-                FifteenDigital::CountClose();  //显示close表的结点数量
-                ui->textBrowser4->setText(QString::number(p->deepth,10));
+                cout << "open table number:" << FifteenDigital::CountOpen() << endl;   //显示open表的结点数量
+                cout << "close table number:" << FifteenDigital::CountClose() << endl;  //显示close表的结点数量
                 break;
             }
          }
         finish = clock();
-        ui->textBrowser3->setText(QString::number((finish-start),10)); //显示运行时间
-        BarValue = p->deepth;
-        ui->progressBar->setValue(100);
+        cout << "Algorithm run time: " << finish-start << endl; //显示运行时间
+        // p->deepth;
         NodeSate = 1;
     }
 }
 
+// 搜索路径的前进后退按钮
 void FifteenDigital::on_pushButton2_clicked()
 {
     if(FinalNode != NULL)
@@ -220,11 +115,9 @@ void FifteenDigital::on_pushButton2_clicked()
                 break;
             p = p->FatherNode;
         }
-        FifteenDigital::ShowNode(p);
-        ui->progressBar->setValue(p->deepth *100 / FinalNode->deepth);
+        //FifteenDigital::ShowNode(p);
     }
 }
-
 void FifteenDigital::on_pushButton4_clicked()
 {
     if(FinalNode != NULL)
@@ -238,8 +131,7 @@ void FifteenDigital::on_pushButton4_clicked()
                 break;
             p = p->FatherNode;
         }
-        FifteenDigital::ShowNode(p);
-        ui->progressBar->setValue(p->deepth *100 / FinalNode->deepth);
+        //FifteenDigital::ShowNode(p);
     }
 }
 
@@ -282,7 +174,7 @@ void FifteenDigital::on_pushButton3_clicked()
         }
     }
 
-    FifteenDigital::ShowNode(&RootNode);
+
     NodeSate = 0;
     RootNode.OpenNext = NULL;
     RootNode.OpenPrevious = NULL;
@@ -300,34 +192,10 @@ void FifteenDigital::on_pushButton3_clicked()
     //close表
     CloseTable.CloseNext = NULL;
     BarValue = 0;
-    ui->progressBar->setValue(0);
 }
 
-void FifteenDigital::on_pushButton5_clicked()
-{
-    AlgorithmType = 1;
-    ui->pushButton5->setStyleSheet("background:rgb(0,255,0)");
-    ui->pushButton6->setStyleSheet("background:rgb(255,255,255)");
-    ui->pushButton7->setStyleSheet("background:rgb(255,255,255)");
-}
 
-void FifteenDigital::on_pushButton6_clicked()
-{
-    AlgorithmType = 2;
-    ui->pushButton5->setStyleSheet("background:rgb(255,255,255)");
-    ui->pushButton6->setStyleSheet("background:rgb(0,255,0)");
-    ui->pushButton7->setStyleSheet("background:rgb(255,255,255)");
-}
-
-void FifteenDigital::on_pushButton7_clicked()
-{
-    AlgorithmType = 3;
-    ui->pushButton5->setStyleSheet("background:rgb(255,255,255)");
-    ui->pushButton6->setStyleSheet("background:rgb(255,255,255)");
-    ui->pushButton7->setStyleSheet("background:rgb(0,255,0)");
-}
-
-void FifteenDigital::on_pushButton_2_clicked()
+void FifteenDigital::init()
 {
     RootNode.Number[0][0]=11;
     RootNode.Number[0][1]=9;
@@ -358,7 +226,7 @@ void FifteenDigital::on_pushButton_2_clicked()
     RootNode.fn = FifteenDigital::CalValueFun(&RootNode);
     FinalNode = NULL;
 
-    FifteenDigital::ShowNode(&RootNode);
+    //FifteenDigital::ShowNode(&RootNode);
 
     //open表
     OpenTable.OpenNext = &RootNode;
@@ -370,5 +238,4 @@ void FifteenDigital::on_pushButton_2_clicked()
     RootNode.CloseNext = NULL;
 
     BarValue = 0;
-    ui->progressBar->setValue(0);
 }

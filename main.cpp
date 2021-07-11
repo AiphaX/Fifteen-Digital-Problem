@@ -10,6 +10,6 @@ int AlgorithmType = 1;
 int main(int argc, char *argv[])
 {
     FifteenDigital w;
-    w.show();
-    w.NodeInit();
+    w.init();   
+    w.run(); 
 }
