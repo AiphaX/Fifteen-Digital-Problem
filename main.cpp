@@ -1,15 +1,19 @@
 #include "fifteendigital.h"
 #include "node.h"
+#include <iostream>
 
-TreeNode RootNode;
-TreeNode OpenTable;
-TreeNode CloseTable;
-TreeNode *FinalNode;
-int AlgorithmType = 1;
+using namespace std;
+ TreeNode RootNode;
+ TreeNode OpenTable;
+ TreeNode CloseTable;
+ TreeNode *FinalNode;
+ int AlgorithmType = 1;
 
-int main(int argc, char *argv[])
+int main()
 {
-    FifteenDigital w;
-    w.init();   
-    w.run(); 
+    cout << "Program is running" << endl;
+     FifteenDigital w;
+     w.init();
+     w.run();
+
 }

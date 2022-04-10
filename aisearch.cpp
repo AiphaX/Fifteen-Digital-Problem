@@ -1,7 +1,6 @@
 
 #include "fifteendigital.h"
 #include "node.h"
-#include "aisearch.h"
 #include "math.h"
 
 //使用1倍曼哈顿距离，扩展结点19719个，41层
@@ -32,7 +31,7 @@ int FifteenDigital::CalValueFun(TreeNode *p)
     }
     if(AlgorithmType == 1)
     {
-        ;      //使用曼哈顿距离,A*算法
+        fn = fn;      //使用曼哈顿距离,A*算法
     }
     else if(AlgorithmType == 2)
     {

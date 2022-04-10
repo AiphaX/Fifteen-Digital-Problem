@@ -15,48 +15,11 @@ TreeNode::TreeNode()
     fn = 0;
 
 }
+
 //结点的析构函数
 TreeNode::~TreeNode()
 {
-    //free TreeNode;
-}
-//对根结点、open表和close表初始化
-void FifteenDigital::NodeInit()
-{
-    //根结点
-    RootNode.Number[0][0]=11;
-    RootNode.Number[0][1]=9;
-    RootNode.Number[0][2]=4;
-    RootNode.Number[0][3]=15;
-    RootNode.Number[1][0]=1;
-    RootNode.Number[1][1]=3;
-    RootNode.Number[1][2]=0;
-    RootNode.Number[1][3]=12;
-    RootNode.Number[2][0]=7;
-    RootNode.Number[2][1]=5;
-    RootNode.Number[2][2]=8;
-    RootNode.Number[2][3]=6;
-    RootNode.Number[3][0]=13;
-    RootNode.Number[3][1]=2;
-    RootNode.Number[3][2]=10;
-    RootNode.Number[3][3]=14;
-    RootNode.OpenNext = NULL;
-    RootNode.CloseNext = NULL;
-    RootNode.FatherNode = NULL;
-    RootNode.deepth = 0;
-    RootNode.EmptyPosition = FifteenDigital::CalEmptyPosition(&RootNode);
-    RootNode.fn = FifteenDigital::CalValueFun(&RootNode);
-    FinalNode = NULL;
-
-    //open表
-    OpenTable.OpenNext = &RootNode;
-    RootNode.OpenPrevious = &OpenTable;
-    OpenTable.OpenPrevious = NULL;
-    //close表
-    CloseTable.CloseNext = NULL;
-
-    //FifteenDigital::ShowNode(&RootNode);
-    //FifteenDigital::UiInit();
+//    delete TreeNode;
 }
 
 //计算一个结点空位的位数
@@ -76,7 +39,7 @@ int FifteenDigital::CalEmptyPosition(TreeNode* p)
     return 0;
 }
 
-void FifteenDigital::CopyNumber(TreeNode* p,char a[4][4])
+void FifteenDigital::CopyNumber(TreeNode* p,int a[4][4])
 {
     for(int i = 0; i<4; i++)
         for(int j =0; j<4 ;j++)
@@ -148,14 +111,14 @@ void FifteenDigital::ExtendNode(TreeNode* p)
 {
     int row = p->EmptyPosition/10;
     int column = p->EmptyPosition%10;
-    char a[4][4];
+    int a[4][4];
 
     if(row>=1)    //可以向上移动
     {
-       FifteenDigital::CopyNumber(p,a);
+       FifteenDigital::CopyNumber(p, a);
        a[row][column] = p->Number[row - 1][column];
        a[row - 1][column] = 0;
-       if(FifteenDigital::FindSameNode(&RootNode,a) == 0)   //去搜索树中搜索没有一样的结点，可以扩展
+       if(FifteenDigital::FindSameNode(&RootNode, a) == 0)   //去搜索树中搜索没有一样的结点，可以扩展
        {
            FifteenDigital::ExtendSonNode(p,UP);
        }
@@ -171,7 +134,7 @@ void FifteenDigital::ExtendNode(TreeNode* p)
 
     if(row<=2)    //可以向下移动
     {
-        FifteenDigital::CopyNumber(p,a);
+        FifteenDigital::CopyNumber(p, a);
         a[row][column] = p->Number[row + 1][column];
         a[row + 1][column] = 0;
         if(FifteenDigital::FindSameNode(&RootNode,a) == 0)  //去搜索树中搜索没有一样的结点，可以扩展
@@ -229,7 +192,7 @@ void FifteenDigital::ExtendNode(TreeNode* p)
 }
 
 //从搜索树中找是否有相同的结点
-int FifteenDigital::FindSameNode(TreeNode* p,char a[4][4])
+int FifteenDigital::FindSameNode(TreeNode* p,int a[4][4])
 {
     int result =0;
     if(p == NULL)
@@ -250,45 +213,6 @@ int FifteenDigital::FindSameNode(TreeNode* p,char a[4][4])
         }
     }
     return (result+1);
-    /*
-    TreeNode *p;
-    p = OpenTable.OpenNext;
-
-    while(p != NULL)
-    {
-        int i ,j;
-        for(i = 0; i<4; i++)
-        {
-            for(j =0; j<4 ;j++)
-            {
-                if(p->Number[i][j] != a[i][j])
-                {
-                    p = p->OpenNext;
-                    continue;
-                }
-            }
-        }
-        return 1;
-    }
-
-    p = CloseTable.CloseNext;
-    while(p != NULL)
-    {
-        for(int i = 0; i<4; i++)
-        {
-            for(int j =0; j<4 ;j++)
-            {
-                if(p->Number[i][j] != a[i][j])
-                {
-                    p = p->CloseNext;
-                    continue;
-                }
-            }
-        }
-       return 1;
-    }
-
-    return 0;*/
 }
 
 //更新open表和close表
@@ -308,7 +232,7 @@ void FifteenDigital::RefreshOpenClose(TreeNode* p)
     CloseTable.CloseNext = p;
 }
 
-//①对open表进行排序,有bug
+//①对open表进行排序
 void FifteenDigital::SortOpenTable()
 {
     TreeNode *MinNode,*temp,*p,*q;
