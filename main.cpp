@@ -15,5 +15,4 @@ int main()
      FifteenDigital w;
      w.init();
      w.run();
-
 }
